@@ -1,5 +1,5 @@
 import firebase from '../../config/firebase.js';
-import User from './userModel.js';
+import { UserModel } from "@turbo-monorepo/shared";
 import {
   getFirestore,
   collection,
@@ -38,7 +38,7 @@ export const createUser = async (req, res, next) => {
         res.status(400).send('No Users found');
       } else {
         users.forEach((doc) => {
-          const user = new User(
+          const user = new UserModel(
             doc.id,
             doc.data().totalAverageWeightRatings,
             doc.data().numberOfRents,
