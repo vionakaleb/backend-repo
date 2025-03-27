@@ -22,5 +22,8 @@
     "nodemon": "^3.1.9",
     "save-dev": "^0.0.1-security"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "turbo": "^2.4.4"
+  }
 }

@@ -13,6 +13,11 @@ import {
 
 const db = getFirestore(firebase);
 
+function convertTimestampToDatetime(timestamp) {
+  const date = new Date(timestamp * 1000); // Convert to milliseconds
+  return date.toISOString(); // Output: "2025-02-07T00:00:12.000Z"
+}
+
 export const createUser = async (req, res, next) => {
     try {
       const data = req.body;
@@ -37,7 +42,7 @@ export const createUser = async (req, res, next) => {
             doc.id,
             doc.data().totalAverageWeightRatings,
             doc.data().numberOfRents,
-            doc.data().recentlyActive
+            convertTimestampToDatetime(doc.data().recentlyActive)
           );
          userArray.push(user);
         });
